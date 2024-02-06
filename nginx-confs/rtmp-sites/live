@@ -1,0 +1,26 @@
+server {
+	listen 1935;
+	chunk_size 4096;
+	allow publish all;
+	allow play all;
+
+
+	application live {
+		live on;
+		# Recording is handled elsewhere (OBS, GoPro app, etc.)
+		record off;
+
+		hls on;
+		hls_path /var/www/html/stream/hls;
+		hls_fragment 1;
+		# Sacrifice a tiny bit of latency for some stability. 2 is ideal, 3 is okay
+		hls_playlist_length 3;
+
+		dash on;
+		dash_path /var/www/html/stream/dash;
+
+  		# add this for authentication
+  		on_publish http://seaside-rtmp-auth:8080/publish;
+  		on_publish_done http://seaside-rtmp-auth:8080/unpublish;
+	}
+}

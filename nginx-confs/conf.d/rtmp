@@ -1,0 +1,23 @@
+server {
+    listen 8088;
+    # server_name streams2.botsu.ro;
+
+    location / {
+        add_header Access-Control-Allow-Origin *;
+        root /var/www/html/stream;
+    }
+
+
+    #! NOTE: SSL termination is expected to be handled outside of this container to avoid headaches and pain
+
+    # listen 443 ssl; # managed by Certbot
+    # ssl_certificate /etc/letsencrypt/live/streams2.botsu.ro/fullchain.pem; # managed by Certbot
+    # ssl_certificate_key /etc/letsencrypt/live/streams2.botsu.ro/privkey.pem; # managed by Certbot
+    # include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    # ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+types {
+    application/dash+xml mpd;
+}
