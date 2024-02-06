@@ -13,7 +13,7 @@ services:
       - ./volumes/rtmp-auth:/app/storage
   seaside-rtmp:
     image: tiangolo/nginx-rtmp
-    depends_on:
+    links:
       - seaside-rtmp-auth
     ports:
       # RTMP
