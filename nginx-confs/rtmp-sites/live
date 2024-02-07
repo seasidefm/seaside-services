@@ -12,9 +12,9 @@ server {
 
 		hls on;
 		hls_path /var/www/html/stream/hls;
-		hls_fragment 4s;
+		hls_fragment 3s;
 		# Sacrifice a tiny bit of latency for some stability
-		hls_playlist_length 8s;
+		hls_playlist_length 9s;
 
 		dash on;
 		dash_path /var/www/html/stream/dash;
