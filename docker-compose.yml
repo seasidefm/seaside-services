@@ -3,7 +3,7 @@ version: '3.7'
 services:
   seaside-rtmp-auth:
     build:
-      dockerfile: ./rtmp-auth/Dockerfile
+      context: ./rtmp-auth
     command: [ "./rtmp-auth", "-apiAddr", "0.0.0.0:8080", "-frontendAddr", "0.0.0.0:8082" ]
     ports:
       - 8080:8080
